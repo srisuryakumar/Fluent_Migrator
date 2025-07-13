@@ -1,0 +1,8 @@
+CREATE TABLE dbo.Employees (
+    EmployeeId INT IDENTITY(1,1) PRIMARY KEY,
+    FirstName NVARCHAR(100) NOT NULL,
+    LastName NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(200) NOT NULL,
+    HireDate DATE NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1
+);
