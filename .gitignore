@@ -1,0 +1,47 @@
+## Build output
+bin/
+obj/
+out/
+TestResults/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vsp
+*.vspx
+*.vspscc
+*.vssscc
+*.cache
+*.log
+*.tlog
+
+## Visual Studio working folder
+.vs/
+
+## ASP.NET specific
+appsettings.Development.json
+secrets.json
+
+## Docker artifacts
+*.dockerignore
+Dockerfile
+docker-compose*
+
+## Rider-specific
+.idea/
+
+## Resharper
+_ReSharper*/
+*.DotSettings.user
+
+## Temporary
+*.tmp
+*.bak
+*.old
+*.orig
+
+## Logs
+*.log
+logs/

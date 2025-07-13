@@ -1,0 +1,8 @@
+CREATE TABLE dbo.Project (
+    ProjectId INT IDENTITY(1,1) PRIMARY KEY,
+    ProjectName NVARCHAR(100) NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE NULL,
+    IsActive BIT NOT NULL DEFAULT 1,
+    CreatedDate DATETIME NOT NULL DEFAULT GETDATE()
+);
