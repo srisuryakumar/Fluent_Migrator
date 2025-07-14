@@ -15,9 +15,7 @@ namespace Fluent_Migrator.Db
         public Task StartAsync(CancellationToken cancellationToken)
         {
             var connectionString = _configuration.GetConnectionString("DefaultConnection");
-
             EnsureDatabaseExists(connectionString);
-
             using var scope = _serviceProvider.CreateScope();
             var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
             runner.MigrateUp();

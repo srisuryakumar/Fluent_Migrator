@@ -22,7 +22,6 @@
     <Folder Include="Scripts\UDTT\" />
     <Folder Include="Scripts\Tables\" />
     <Folder Include="Scripts\Views\" />
-    <Folder Include="Scripts\SP\" />
   </ItemGroup>
 
 </Project>

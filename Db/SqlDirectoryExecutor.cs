@@ -6,7 +6,7 @@ namespace Fluent_Migrator.Db
     {
         public static void ExecuteAllSqlInDirectory(Migration migration, string folderRelativePath, bool ignoreErrors = false)
         {
-            var projectBasePath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\Scripts"));
+            var projectBasePath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "Scripts"));
             var targetDir = Path.Combine(projectBasePath, folderRelativePath);
 
             if (!Directory.Exists(targetDir))
