@@ -59,5 +59,54 @@ namespace Fluent_Migrator.Controllers
             cmd.ExecuteNonQuery();
             return Ok("Project inserted successfully.");
         }
+        [HttpGet]
+        public IActionResult GetAllEmployees()
+        {
+            var employees = new List<Employees>();
+
+            using var conn = new SqlConnection(_connectionString);
+            using var cmd = new SqlCommand("GetAllEmployees", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            conn.Open();
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                employees.Add(new Employees
+                {
+                    EmployeeId = reader.GetInt32(reader.GetOrdinal("EmployeeId")),
+                    FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
+                    LastName = reader.GetString(reader.GetOrdinal("LastName")),
+                    Email = reader.GetString(reader.GetOrdinal("Email")),
+                    HireDate = reader.GetDateTime(reader.GetOrdinal("HireDate")),
+                    IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive"))
+                });
+            }
+
+            return Ok(employees);
+        }
+
+        [HttpPost]
+        public IActionResult InsertEmployee([FromBody] Employees employee)
+        {
+            using var conn = new SqlConnection(_connectionString);
+            using var cmd = new SqlCommand("InsertEmployee", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            cmd.Parameters.AddWithValue("@FirstName", employee.FirstName);
+            cmd.Parameters.AddWithValue("@LastName", employee.LastName);
+            cmd.Parameters.AddWithValue("@Email", employee.Email);
+            cmd.Parameters.AddWithValue("@HireDate", employee.HireDate);
+            cmd.Parameters.AddWithValue("@IsActive", employee.IsActive);
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+
+            return Ok("Employee inserted successfully.");
+        }
     }
 }

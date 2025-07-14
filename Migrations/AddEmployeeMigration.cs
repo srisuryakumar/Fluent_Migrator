@@ -8,11 +8,9 @@ namespace Fluent_Migrator.Migrations
     {
         public override void Up()
         {
-            SqlDirectoryExecutor.ExecuteAllSqlInDirectory(this, "Tables");
-            SqlDirectoryExecutor.ExecuteAllSqlInDirectory(this, "UDTT");
-            SqlDirectoryExecutor.ExecuteAllSqlInDirectory(this, "SP");
-            SqlDirectoryExecutor.ExecuteAllSqlInDirectory(this, "Functions");
-            SqlDirectoryExecutor.ExecuteAllSqlInDirectory(this, "Views");
+            Execute.Sql(File.ReadAllText("Scripts/Tables/Employees.sql"));
+            Execute.Sql(File.ReadAllText("Scripts/SP/GetAllEmployees.sql"));
+            Execute.Sql(File.ReadAllText("Scripts/SP/InsertEmployees.sql"));
         }
         public override void Down()
         {
